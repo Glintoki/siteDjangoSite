@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/regcss.css" type="text/css"/>
+      <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <title>Выложить объявление</title>
+ </head>
+ <body>
+    <div id="range1">
+
+        <div class="outer">
+          <div class="middle">
+            <div class="inner">
+        
+                <div class="login-wr">
+                  <h2>Выложить объявление</h2>
+                  
+                  <div class="form">
+                     <form method="post" action="">
+                         {% csrf_token %}
+                    <input type="Number" value="{{ idProduct.id }}" style="display:none" name="id">
+                    <input type="text" value="{{ idProduct.Anons_NameProducts }}" name="Name" required placeholder="Название товара" >
+                    <input type="number" value="{{ idProduct.Anons_SumProduct }}" class="buttonphone" min="1" max="1000" name="Sum" required placeholder="Количество товара"  >
+                          <input type="number" value="{{ idProduct.Anons_PriceProduct }}" class="buttonphone" min="1" max="1000" name="Price" required placeholder="Цена оптом за товар">
+                         <p>Дата изготовления </p>
+                    <input type="date" value="{{ idProduct.Anons_DateManaProducts|date:'o-m-d'}}" class="buttonphone" required name="DateMan" >
+                         <P>Срок годности</P>
+                          <input type="date" value="{{ idProduct.Anons_DateManaProducts|date:'o-m-d'}}" class="buttonphone" required name="DateExpMan" >
+                         <p></p>
+                    <input type="submit" name="add" class="button1" value="Разместить объявление">
+                    </form>
+                    <a href="/sitePostavshik/siteorderpostav.html"> <button class="button1"> Вернуться</button></a>
+                      <p class="text" style="color:white; margin-top:0;font-size: 15px;">{{ message }}</p>
+                  </div>
+                </div>
+        
+            </div>
+          </div>
+        </div>
+        
+        </div>
+ 
+ </body>
+</html>

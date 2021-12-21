@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/regcss.css" type="text/css"/>
+         <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <title>Обновить</title>
+ </head>
+ <body>
+    <div id="range1">
+
+        <div class="outer">
+          <div class="middle">
+            <div class="inner">
+
+                <div class="login-wr">
+                  <h2>Изменить заказ товара</h2>
+
+                  <div class="form">
+                      <form method="post" action="/siteshop/{{idOrders.id}}/UpdateOrder.html">
+                          {% csrf_token %}
+
+                    <select class="buttonphone" name="Products">{% for product in products %}
+                    {%if product.id == idOrders.Order_Id_Product%}
+                        <option value="{{ product.id }}" selected>{{product.Product_Name}}</option>
+                    {%else%}
+                        <option value="{{ product.id }}">{{product.Product_Name}}</option>
+                    {%endif%}
+                    {% endfor %}
+                    </select>
+                    <input type="number" name="Sum"  value="{{ idOrders.Order_Sum }}" class="buttonphone" min="1" max="1000" placeholder="Количество" >
+                    <input type="text" name="NameShop" value="{{ idOrders.Order_Name_Store }}"required placeholder="Название магазина" >
+                    <input type="text" name="Address" value="{{ idOrders.Order_Address }}" required placeholder="Улица магазина" >
+                    <input type="submit" name="updateOrder1" class="button1" value="Запостить заказ">
+                    </form>
+                      <a href="/siteshop/siteordershop.html"><button class="button1">Вернуться</button></a>
+
+
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+ </body>
+</html>

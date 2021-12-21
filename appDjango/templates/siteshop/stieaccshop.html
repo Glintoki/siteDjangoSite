@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/siteacccss.css" type="text/css"/>
+         <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  
+  <title>Главная страница пользователя</title>
+ </head> 
+ <body>
+    <div class="topnav" id="myTopnav">
+        <a href="stieaccshop.html" class="active">Главная страница</a>
+
+        <a href="siteordershop.html"> Мои заказы</a>
+            <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+
+       
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+
+<div id="range1">
+  <div class="outer">
+          <div class="middle">
+            <div class="inner">
+                <div class="form">
+                <div class="login-wr rashirenie">
+                    <P>Здраствуйте, вы вошли в свой аккаунт как Менеджер магазина</P>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+</div>
+  
+      <script src="../static/Jss/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/siteorders.css" type="text/css"/>
+     <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+ <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  
+  <title>Продукты</title>
+ </head> 
+ <body>
+    <div class="topnav" id="myTopnav">
+     <a href="productssite.html" class="active">Товары</a>
+        <a href="stieacc.html">Главная страница</a>
+
+        <a href="siteannons.html">Объявления</a>
+        <a href="siteorder.html">Заказы</a>
+        <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+      <script src="../static/Jss/script.js"></script>
+
+      <form method="post">
+         {% csrf_token %}
+      <table class="delivery">
+        <thead>
+        <tr>
+            <th></th>
+        <th>Название товара</th>
+        <th>Количество товара</th>
+        <th>Цена товара</th>
+        <th>Дата изготовления</th>
+        <th>Срок годности</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+          {% for orderser in productsee %}
+          {% include 'ProductTable.html' %}
+          {% endfor %}
+        </tbody>
+        </table>
+           <input type="submit" class="button1" name="updateproduct" value="Изменить товар" >
+           <input type="submit" name="deleteproducts" class="button1" value="Удалить товар">
+      </form>
+    </body>
+</html>

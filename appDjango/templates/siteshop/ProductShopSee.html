@@ -1,0 +1,10 @@
+{% block content %}
+<tr tabindex="0">
+	<input type="radio" id="check{{ orderser.id }}" style="display:none;" name="id" value="{{ orderser.id }}"/>
+	<td><label for="check{{ orderser.id }}">{{ orderser.Product_Name }}</label></td>
+	<td><label for="check{{ orderser.id }}">{{ orderser.Product_Sum }}</label></td>
+	<td><label for="check{{ orderser.id }}">{{ orderser.Product_Price }}</label></td>
+	<td><label for="check{{ orderser.id }}">{{ orderser.Product_Production_Date }}</label></td>
+	<td><label for="check{{ orderser.id }}">{{ orderser.Product_Expiration_Date }}</label></td>
+</tr>
+{% endblock %}

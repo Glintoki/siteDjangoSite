@@ -1,0 +1,10 @@
+{% block content %}
+<tr tabindex="0">
+	<td><input type="radio" id="check{{ anonser.id }}" name="id" value="{{ anonser.id }}"/></td>
+	<td><label for="check{{ anonser.id }}">{{ anonser.Anons_NameProducts }}</label></td>
+	<td><label for="check{{ anonser.id }}">{{ anonser.Anons_SumProduct }}</label></td>
+	<td><label for="check{{ anonser.id }}">{{ anonser.Anons_PriceProduct }}</label></td>
+	<td><label for="check{{ anonser.id }}">{{ anonser.Anons_DateManaProducts }}</label></td>
+	<td><label for="check{{ anonser.id }}">{{ anonser.Anons_ExpirationDate }}</label></td>
+</tr>
+{% endblock %}

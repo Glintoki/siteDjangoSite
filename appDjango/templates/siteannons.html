@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/siteorders.css" type="text/css"/>
+      <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+
+  <title>Объявления</title>
+ </head> 
+ <body>
+    <div class="topnav" id="myTopnav">
+        <a href="siteannons.html" class="active">Объявления</a>
+        <a href="stieacc.html">Главная страница</a>
+        <a href="siteorder.html">Заказы</a>
+        <a href="productssite.html">Товары</a>
+        <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+
+      <form method="post">
+           {% csrf_token %}
+      <table class="delivery">
+        <thead>
+        <tr>
+            <th></th>
+        <th>Название товара</th>
+        <th>Количество</th>
+        <th>Цена оптом</th>
+        <th>Дата изготовления</th>
+        <th>Срок годности</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for anonser in tablesee %}
+          {% include 'sitePostavshik/OrderTable.html' %}
+          {% endfor %}
+        </tr>
+        </tbody>
+        </table>
+
+       <input type="submit" class="button1" name="addproduct" value="Принять объявление" >
+       <input type="submit" class="button1" name="deleteproduct" value="Удалить объявление" >
+</form>
+      <script src="../static/Jss/script.js"></script>
+    </body>
+</html>

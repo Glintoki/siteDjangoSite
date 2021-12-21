@@ -1,0 +1,9 @@
+{% block content %}
+<tr tabindex="0">
+	<td><input type="radio" id="check{{ shoper.id }}" name="id" value="{{ shoper.id }}"/></td>
+	<td><label for="check{{ shoper.id }}">{{ shoper.Order_Name_Product }}</label></td>
+	<td><label for="check{{ shoper.id }}">{{ shoper.Order_Sum }}</label></td>
+	<td><label for="check{{ shoper.id }}">{{ shoper.Order_Name_Store }}</label></td>
+	<td><label for="check{{ shoper.id }}">{{ shoper.Order_Address }}</label></td>
+</tr>
+{% endblock %}

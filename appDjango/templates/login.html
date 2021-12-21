@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+        <link rel="stylesheet" href="../static/Css/regcss.css" type="text/css"/>
+      <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <title>Авторизация</title>
+ </head>
+ <body>
+    <div id="range1">
+
+        <div class="outer">
+          <div class="middle">
+            <div class="inner">
+
+                <div class="login-wr">
+                  <h2>Вход</h2>
+
+                  <div class="form">
+                      <form method="post">
+                            {% csrf_token %}
+                    <input type="text" name="login"  placeholder="Логин">
+                    <input type="password" name="password" placeholder="Пароль">
+                    <input type="submit" class="button1"  value="Авторизоваться">
+                  </form>
+                       <a href="registration.html"><button >Регистрация</button></a>
+                       <p class="text" style="color:white; margin-top:0;font-size: 15px;">{{ message }}</p>
+                  </div>
+                </div>
+
+            </div
+          </div>
+        </div>
+        
+        </div>
+ 
+ </body>
+</html>

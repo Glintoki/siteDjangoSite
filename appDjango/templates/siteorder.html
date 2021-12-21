@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/siteorders.css" type="text/css"/>
+      <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  
+  <title>Заказы</title>
+ </head> 
+ <body>
+    <div class="topnav" id="myTopnav">
+        <a href="siteorder.html" class="active">Заказы</a>
+        <a href="stieacc.html">Главная страница</a>
+  
+        <a href="siteannons.html">Объявления</a>
+        <a href="productssite.html">Товары</a>
+        <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+       
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+      <script src="../static/Jss/script.js"></script>
+
+      <form method="post">
+        {% csrf_token %}
+      <table class="delivery">
+        <thead>
+        <tr>
+            <th></th>
+        <th>Название товара</th>
+        <th>Количество</th>
+        <th>Название магазина</th>
+        <th>Улица магазина</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for shoper in shopsee %}
+        {% include 'siteshop/ShopOrderTable.html' %}
+        {% endfor %}
+        </tbody>
+        </table>
+
+        
+
+        <input type="submit" class="button1" name="AddProduct" value="Принять заказ">
+
+        <input type="submit" class="button1" name="DeleteProduct" value="Удалить заказ">
+
+</form>
+    <div class="text" style="color:white; margin-top:0;font-size: 30px;">
+   {% if messages %}
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                                {% endfor %}
+                          {% endif %}
+        </div>
+    </body>
+</html>

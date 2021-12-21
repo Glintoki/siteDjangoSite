@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+ <link rel="stylesheet" href="../static/Css/regcss.css" type="text/css"/>
+      <link href="../static/Css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" type="text/css" rel="stylesheet" />
+    <link href="../static/Css/templatemo-diagoona.css" type="text/css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <title>Регистрация</title>
+ </head>
+ <body class="backgr">
+
+    <div id="range1">
+
+        <div class="outer">
+          <div class="middle">
+            <div class="inner">
+        
+                <div class="login-wr">
+                  <h2>Регистрация</h2>
+                  <div class="form">
+                  <form class="form" action="" method="post">
+                      {% csrf_token %}
+                     
+                    <input type="text" maxlength="50" name="SurName" required placeholder="Фамилия" >
+                    <input type="text" maxlength="50" name="Name"  required placeholder="Имя"  >
+                    <input type="text" maxlength="50" name="AfterName" required placeholder="Отчество" >
+                    <input type="text" name="Login" required placeholder="Логин">
+                    <input type="tel" pattern="[0-9]{11}" name="Phone" class="buttonphone" required placeholder="Телефон">
+                    <input type="password" name="Pass" required placeholder="Пароль">
+                        <p><select size="3" multiple name="Pos">
+                        <option  value="Поставщик">Поставщик</option>
+                        <option selected value="Менеджер склада">Менеджер склада</option>
+                        <option value="Менеджер магазина">Менеджер магазина</option>
+                       </select></p>
+                    <a href="/login.html"><input type="submit" class="button1" value="Зарегистроваться"></a>
+                  </form>
+                        <a href="/login.html"><button class="button1"> Уже есть аккаунт </button></a>
+                      <p class="text" style="color:red; margin-top:0;font-size: 20px;">{{ message }}</p>
+                      </div>
+                </div>
+        
+            </div>
+          </div>
+        </div>
+        
+        </div>
+
+ </body>
+</html>

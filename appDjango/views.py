@@ -144,14 +144,21 @@ class SiteOrder(View):
                 deleteorder(id)
                 return HttpResponseRedirect('siteorder.html')
             elif request.POST.get("AddProduct"):
-                bullOrder = AddOrder(id)
-                if (bullOrder == 1):
-                    deleteorder(id)
-                    return HttpResponseRedirect("ErrorSiteProducts.html")
+                OrderSum = Order.objects.filter(id=id).first()
+                if (Product.objects.filter(id=OrderSum.Order_Id_Product).exists()):
+                    bullOrder = AddOrder(id)
+                    if (bullOrder == 1):
+                        deleteorder(id)
+                        return HttpResponseRedirect("ErrorSiteProducts.html")
+                    else:
+                        deleteorder(id)
+                        messages.success(request, "Заказ успешно выполнен")
+                        return HttpResponseRedirect('siteorder.html')
+
                 else:
                     deleteorder(id)
-                    messages.success(request,"Заказ успешно выполнен")
-                    return HttpResponseRedirect('siteorder.html')
+                    return HttpResponseRedirect("ErrorSiteProducts.html")
+
         else:
             shopsee = getOrder()
             context = {

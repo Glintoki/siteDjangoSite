@@ -9,6 +9,7 @@ urlpatterns = [
     path('MainSite/services.html', MainSiteService.as_view()),
     path('login.html', Login.as_view()),
     path('registration.html', Registration.as_view()),
+    path('registrationPostav.html', RegistrationPostav.as_view()),
     path('siteannons.html', SiteAnons.as_view()),
     path('siteorder.html', SiteOrder.as_view()),
     path('stieacc.html', SiteAcc.as_view()),
@@ -25,3 +26,4 @@ urlpatterns = [
     path('ErrorSiteProducts.html', ErrorSitesProducts.as_view()),
     path('logout/', logout, name='logout')
 ]
+handler404 = 'appDjango.views.error_404'

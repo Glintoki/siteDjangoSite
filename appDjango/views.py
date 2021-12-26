@@ -7,6 +7,13 @@ from datetime import datetime
 from django.contrib import messages
 
 
+def error_404(request, exception):
+    context = {
+        'Privel': request.session['priv_user']
+    }
+    return render(request, '404.html', context)
+
+
 class Login(View):
     def get(self, request):
         context = {
@@ -62,10 +69,41 @@ class Registration(View):
         else:
             if position_user == "Поставщик":
                 user_role = "Поставщик"
-            elif position_user == "Менеджер склада":
-                user_role = "Менеджер склада"
             else:
                 user_role = "Менеджер магазина"
+            create_anons = User( Worker_Surname=user_surname, Worker_Name=user_name,
+                                 Worker_Patronymic= user_aftername,
+                                 Worker_Login=user_login,
+                                 Worker_Number=user_phone,
+                                 Worker_Password = user_pass,
+                                 Worker_Position = user_role)
+            create_anons.save()
+            return HttpResponseRedirect('login.html')
+
+
+class RegistrationPostav(View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, 'registrationPostav.html', context=context)
+
+    def post(self, request):
+        user_surname = request.POST['SurName']
+        user_name = request.POST['Name']
+        user_aftername = request.POST['AfterName']
+        user_login = request.POST['Login']
+        user_phone = request.POST['Phone']
+        user_pass = request.POST['Pass']
+        LoginUser = request.POST.get("Login")
+        loginSearchs = loginSearch(LoginUser)
+        if loginSearchs:
+            context = {
+                "message": "Логин уже занят"
+            }
+            return render(request, 'registrationPostav.html', context=context)
+        else:
+            user_role = "Менеджер склада"
             create_anons = User( Worker_Surname=user_surname, Worker_Name=user_name,
                                  Worker_Patronymic= user_aftername,
                                  Worker_Login=user_login,
@@ -144,6 +182,7 @@ class SiteOrder(View):
                 deleteorder(id)
                 return HttpResponseRedirect('siteorder.html')
             elif request.POST.get("AddProduct"):
+                get_object_or_404(Order, id=id)
                 OrderSum = Order.objects.filter(id=id).first()
                 if (Product.objects.filter(id=OrderSum.Order_Id_Product).exists()):
                     bullOrder = AddOrder(id)

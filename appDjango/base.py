@@ -1,4 +1,5 @@
 from .models import *
+from django.shortcuts import get_object_or_404
 
 def autoriz(login, password):
     users = User.objects.filter(Worker_Login=login, Worker_Password=password)
@@ -21,21 +22,24 @@ def getOrder():
 
 
 def delete(id):
+    get_object_or_404(Anons, id=id)
     product = Anons.objects.get(id=id)
     product.delete()
 
 
 def deleteproduct(id):
-    product1= Product.objects.get(id=id)
+    product1 = Product.objects.get(id=id)
     product1.delete()
 
 
 def deleteorder(id):
+    get_object_or_404(Order, id=id)
     order = Order.objects.get(id=id)
     order.delete()
 
 
 def get_product_id(id):
+    get_object_or_404(Anons, id=id)
     products = Anons.objects.get(id=id)
     return products
 
@@ -56,18 +60,19 @@ def loginSearch(login):
 
 
 def get_products_id(id):
+    get_object_or_404(Product, id=id)
     productss = Product.objects.get(id=id)
     return productss
 
 
 def get_orders_id(id):
+    get_object_or_404(Order, id=id)
     orders = Order.objects.get(id=id)
     return orders
 
 
 def AddOrder(id):
     OrderSum = Order.objects.filter(id=id).first()
-
     product = Product.objects.filter(id=OrderSum.Order_Id_Product).first()
     if (product.Product_Sum < OrderSum.Order_Sum):
         return 1
